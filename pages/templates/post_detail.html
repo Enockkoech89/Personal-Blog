@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load embed_video_tags %}
+ 
+
+{% block content %}
+
+<!--Main layout-->
+
+  <main class="mt-4 pt-5">
+    <div class="container">
+      <div class='ml-md-3 text-center'>
+          <span class="badge badge-danger">Get personal/business website <a target="blank" href="https://frankfredtechweb.herokuapp.com/contact/">Frank&Fred|Tech</a></span>              
+      </div>
+      
+      <!--Section: Post-->
+      <section class="mt-4">
+
+        <!--Grid row-->
+        <div class="row">
+
+          <!--Grid column-->
+          <div class="col-md-8 mb-4">
+            
+                     
+
+            <!--Featured Image-->
+            <div class="container mb-4 wow fadeIn">
+
+              <img width="100%" src="{{ object.photo.url }}" >
+
+            </div>
+            <!--/.Featured Image-->
+
+            <!--Card-->
+            <!--/.Card-->
+
+            <!--Card-->
+            <div class="container mb-4 wow fadeIn">
+
+              <!--Card content-->
+              <div class="content-section">
+
+                <p><u class="h5 my-4"><b>{{ object.title }}</b></u></p>
+                <p>Posted on: <i>{{ object.date_posted }}</i></p>
+
+                {% if object.author == user %}
+                  <a class="btn btn-info" href="{% url 'post-update' object.id %}">Update Post</a>
+                  <a class="btn btn-danger" href="{% url 'post-delete' object.id %}">Delete Post</a>
+                {% endif %}
+
+                <p>{{ object.content }}</p>
+
+
+                <div class='iframe-container'>
+                
+                    {% video post.video as my_video %}
+                      
+                        {% video my_video '100% x 360' %}
+
+                    {% endvideo %}
+
+                </div>
+
+                <!-- <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/{{ object.get_absolute_url }}" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="true"></div>
+
+                <p>
+
+                <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/{{ object.get_absolute_url }}" data-numposts="5" data-width="100%"></div> -->
+             
+
+              </div>
+               
+
+            </div>
+            <!--/.Card-->
+
+            <!--Card-->
+            <div class="card mb-4 wow fadeIn">
+
+              <!--Card content-->
+              <div class="card-body">
+                <p class="mt-0 mb-1 font-italic">About Author</p>
+
+                <div class="media d-block d-md-flex mt-3">
+
+                  <img class="w3-border w3-padding" src="{{ object.author.profile.p_image.url }}"  height="100" width="100">
+                  <!-- <img class="d-flex mb-3 mx-auto z-depth-1" src="{{ object.author.profile.image.url}}"
+                    alt="Generic placeholder image" style="width: 100px;"> -->
+                  <div class="media-body text-center text-md-left ml-md-3 ml-0">
+                    <h5 class="mt-0 font-weight-bold">{{ object.author }}</h5>
+                    {{ object.author.profile.biography }}
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+            <!--/.Reply-->
+
+            <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/{{ object.get_absolute_url }}" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="true"></div>
+
+            <p>
+
+            <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/{{ object.get_absolute_url }}" data-numposts="5" data-width="100%"></div>
+             
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-md-4 mb-4">
+
+            <!--Card: Jumbotron-->
+            <div class="card blue-gradient mb-4 wow fadeIn">
+
+              <!-- Content -->
+              <div class="card-body text-white text-center">
+
+                <h4 class="mb-4">
+                  <strong>Dream bigger and Don't ever give up</strong>
+                </h4>
+                <p class="mb-4">
+                  <strong>The harder you work on your dreams, the greater you'll feel when you achieve it.</strong>
+                </p>
+
+              </div>
+              <!-- Content -->
+            </div>
+            <!--Card: Jumbotron-->
+
+            <!--Card : Dynamic content wrapper-->
+            <div class="card mb-4 text-center wow fadeIn">
+
+              <div class="card-header">Do you want to get informed about new articles?</div>
+
+              <!--Card content-->
+              <div class="card-body">
+
+                <!-- Default form login -->
+                <form>
+                  <div class="text-center mt-4">
+                    <a href="{% url 'subsciption' %}" class="btn btn-info btn-md" type="submit">Subscribe Today</a>
+                  </div>
+                </form>
+                <!-- Default form login -->
+
+              </div>
+
+            </div>
+            <!--/.Card : Dynamic content wrapper-->
+
+            <!--Card-->
+            <div class="card mb-4 wow fadeIn">
+
+              <div class="card-header">Browse More {{object.get_category_display}} Post</div>
+
+              <!--Card content-->
+              
+              <div class="card-body">
+
+                
+
+                <ul class="list-unstyled">
+                  <li class="media">
+                    <img class="d-flex mr-3" src="{{ object.photo.url }}" alt="Generic placeholder image" width="48%" height="48%">
+                    <div class="media-body">
+                      <a class="btn btn-info" href="{% url 'home' %}">
+                        <p class="mt-0 mb-1 font-italic">Browse</p>
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+                
+
+              </div>
+              
+
+            </div>
+            <!--/.Card-->
+
+          </div>
+          <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+
+      </section>
+      <!--Section: Post-->
+
+    </div>
+  </main>
+  <!--Main layout-->
+
+{% endblock %}

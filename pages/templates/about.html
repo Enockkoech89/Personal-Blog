@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+ 
+
+{% block content %}
+
+<!--Main layout-->
+  <main class="mt-4 pt-5">
+    <div class="container">
+
+      <!--Section: Post-->
+      <section class="mt-4">
+
+        <!--Grid row-->
+        <div class="row">
+
+          <!--Grid column-->
+          <div class="col-md-8 mb-4">
+
+            <!--Featured Image-->
+            <div class="card mb-4 wow fadeIn">
+
+              <img src="#" class="img-fluid" alt="">
+
+            </div>
+          
+            <div class="card mb-4 wow fadeIn">
+
+              <div class="card-header font-weight-bold">
+                <span>About author</span>
+                <span class="pull-right">
+                  <a target= "blank" href="https://www.facebook.com/enock.tom.7">
+                    <i class="fab fa-facebook-f mr-2"></i>
+                  </a>
+                </span>
+              </div>
+
+              <!--Card content-->
+              <div class="card-body">
+
+                <div class="media d-block d-md-flex mt-3">
+                  <img class="d-flex mb-3 mx-auto z-depth-1" src="https://i.ibb.co/pLkqzXJ/mer4.jpg"
+                    alt="Generic placeholder image" style="width: 100px;">
+                  <div class="media-body text-center text-md-left ml-md-3 ml-0">
+                    <h5 class="mt-0 font-weight-bold">Enock Koech</h5>
+                    Techpreneur, python programmer, django web developer, Artificial Intelligence (AI) & Machine Learning specialist.
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+            <!--/.Card-->
+
+            <!--Comments-->
+            
+            <!--/.Comments-->
+
+            <!--Reply-->
+           
+            <!--/.Reply-->
+
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-md-4 mb-4">
+
+            <!--Card: Jumbotron-->
+            <div class="card blue-gradient mb-4 wow fadeIn">
+
+              <!-- Content -->
+              <div class="card-body text-white text-center">
+
+                <h4 class="mb-4">
+                  <strong>Dream bigger and Don't ever give up</strong>
+                </h4>
+                <p>
+                  <strong>The harder you work on your dreams, the greater you'll feel when you achieve</strong>
+                </p>
+                  <a href="{% url 'subsciption' %}" class="btn btn-outline-white btn-md">Subscribe
+                </a>
+
+              </div>
+              <!-- Content -->
+            </div>
+            <!--Card: Jumbotron-->
+
+            <!--Card : Dynamic content wrapper-->
+            <!--/.Card : Dynamic content wrapper-->
+
+            <!--Card-->
+            
+            <!--/.Card-->
+
+          </div>
+          <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+
+      </section>
+      <!--Section: Post-->
+
+    </div>
+  </main>
+  <!--Main layout-->
+
+{% endblock %}

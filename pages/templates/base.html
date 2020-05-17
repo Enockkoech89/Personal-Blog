@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Enock Blog</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'min.css' %}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{% static 'mdb.css' %}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{% static 'img.css' %}" rel="stylesheet">
+</head>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0"></script>
+
+<body>
+  
+  <!--Main Navigation-->
+  <header>
+
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+      <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand waves-effect" href="{% url 'home' %}">
+          <!-- <img class="d-flex mb-3 mx-auto z-depth-1" src="https://i.ibb.co/pLkqzXJ/mer4.jpg"
+          alt="Generic placeholder image" style="width: 50px;"> -->
+          <strong class="blue-text">Enock|Blog</strong>
+        </a>
+
+        <!-- Collapse -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <!-- Left -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link waves-effect" href="{% url 'home' %}">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="{% url 'about' %}">About Me</a>
+            </li>
+           
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="{% url 'technology' %}">Tech</a> 
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="{% url 'economics' %}">Econ</a>
+            </li>
+          </ul>
+
+          <!-- Right -->
+          <ul class="navbar-nav nav-flex-icons">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="{% url 'post-create' %}">Create Post</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="{% url 'profile' %}">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="{% url 'logout' %}">Logout</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="{% url 'register' %}">Add An Editor</a>
+            </li>
+            
+            {% else %}
+             <li class="nav-item">
+              <a class="nav-link waves-effect" href="{% url 'login' %}">Login</a>
+            </li>
+             
+            {% endif %}
+          </ul>
+
+        </div>
+
+      </div>
+    </nav>
+    <!-- Navbar -->
+
+  </header>
+  <div class='container mt-4'>  
+  {% if messages %}
+        {% for message in messages %}
+        <br>
+        <div class="alert alert-{{ message.tags }}" role="alert">
+          <h4 class="alert-heading">Sucess!</h4>
+          <p></p>
+          <hr>
+          <p class="mb-0">{{message}}</p>
+        </div>
+        {% endfor %}
+    {% endif %}
+  {% block content %}
+  
+  {% endblock %}
+  </div>
+  <footer class="page-footer text-center font-small mdb-color darken-2 mt-4 wow fadeIn">
+
+    <!--Call to action-->
+    <!--/.Call to action-->
+
+    <hr class="my-4">
+
+    <!-- Social icons -->
+    <div class="pb-4">
+      <a href="https://www.facebook.com/enock.tom.7" target="_blank">
+        <i class="fab fa-facebook-f mr-3"></i>
+      </a>
+    </div>
+    <!-- Social icons -->
+
+    <!--Copyright-->
+    <div class="footer-copyright py-3">
+      © 2020 Copyright: EvaBlog - 
+      <a href="https://frankfredtechweb.herokuapp.com" target="_blank">
+        <i class="text-small italic ">Created by Frank&Fred|Tech</i>
+      </a>
+    </div>
+    <!--/.Copyright-->
+
+  </footer>
+  <!--/.Footer-->
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="{% static 'min.js' %}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{% static 'popper.js' %}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{% static 'bootstrapmin.js' %}"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{% static 'mdbmin.js' %}"></script>
+  <!-- Initializations -->
+  <script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+
+  </script>
+</body>
+
+</html>
