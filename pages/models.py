@@ -8,7 +8,7 @@ class Post(models.Model):
 	CATAGORY_CHOICES = (
 		
 		('T','Technology'),
-		('E','Economics'),
+		('E','Socio/Econ'),
 
 	)
 	title = models.CharField(max_length=100)
